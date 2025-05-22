@@ -1,9 +1,11 @@
 ﻿{
     "Repo":  "https://github.com/quantumryuu/dotfiles.git",
     "Files":  {
-                  "starship.toml":  "C:\\Users\\Christos\\.config\\starship.toml",
+                  "settings.json":  "C:\\Users\\Christos\\AppData\\Local\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\\settings.json",
+                  "Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1":  "$HOME\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1",
                   "Documents\\WindowsPowerShell\\Microsoft.PowerShellISE_profile.ps1":  "$HOME\\Documents\\WindowsPowerShell\\Microsoft.PowerShellISE_profile.ps1",
+                  "profiles.json":  "C:\\Users\\Christos\\AppData\\Local\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\\profiles.json",
                   "Documents\\WindowsPowerShell\\Microsoft.VSCode_profile.ps1":  "$HOME\\Documents\\WindowsPowerShell\\Microsoft.VSCode_profile.ps1",
-                  "Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1":  "$HOME\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1"
+                  "starship.toml":  "C:\\Users\\Christos\\.config\\starship.toml"
               }
 }
