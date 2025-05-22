@@ -1,6 +1,9 @@
 #Keys
 ssh-add -q $env:USERPROFILE\.ssh\github
 
+Import-Module 'gsudoModule'
+import-module DotManagement
+
 #Functions
 function ex {
     exit
@@ -31,21 +34,6 @@ Function ...... {
     Set-Location ../../../../..
 }
 
-function Update-Dotfiles {
-    chezmoi update
-    
-}
-
-function Push-Dotfiles {
-    $date = Get-Date -Format "dd/MM/yyyy HH:mm"
-    $currentlocation = (get-location).Path
-    Set-Location "$env:USERPROFILE\.local\share\chezmoi"
-    git add .
-    git commit -m $date
-    git push
-    Set-Location $currentlocation
-}
-
 # Aliases
 Set-Alias -Name Q -Value ex
 Set-Alias -Name C -Value "Clear"
@@ -65,13 +53,8 @@ Set-Psreadlineoption -Predictionsource History
 Clear
 
 Invoke-Expression (&starship init powershell)
-function Start-PowershellSystem {
-C:\Software\PSTools\PsExec64.exe -s -i powershell.exe -accepteula
-}
+
 function Start-PowershellSystem {
 C:\Software\PSTools\PsExec64.exe -s -i powershell.exe -accepteula
 }
 
-function Write-Hi {
-Write-Host "Hi!"
-}
