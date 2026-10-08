@@ -2,7 +2,7 @@
 
 format = """
 [](red)\
-$username\
+[Christos](bg:red fg:crust)\
 [](bg:peach fg:red)\
 $directory\
 [](fg:peach bg:lavender)\
