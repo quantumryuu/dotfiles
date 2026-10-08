@@ -34,13 +34,15 @@ foreach ($edition in 'PowerShell', 'WindowsPowerShell') {
 # ---------------------------------------------------------------------------
 # 2. Packages
 # ---------------------------------------------------------------------------
-# Edit this list to taste. Find IDs with: winget search <name>
+# Edit this list to taste: package ID = the winget source it comes from.
+# Apps live in 'winget', fonts in 'winget-font'. Find IDs with: winget search <name>
 
-$packages = @(
-    'Microsoft.PowerShell'          # PowerShell 7
-    'Microsoft.WindowsTerminal'
-    'Starship.Starship'
-    'ryanoasis.CaskaydiaCove'  # Starship's icons need a Nerd Font; any one works)
+$packages = [ordered]@{
+    'Microsoft.PowerShell'      = 'winget'        # PowerShell 7
+    'Microsoft.WindowsTerminal' = 'winget'
+    'Starship.Starship'         = 'winget'
+    'ryanoasis.CaskaydiaCove'   = 'winget-font'   # Starship's icons need a Nerd Font; any one works
+}
 
 if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     Write-Host "winget not found. Install 'App Installer' from the Microsoft Store, then run 'chezmoi apply' again."
@@ -49,7 +51,9 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
 
 $failed = @()
 
-foreach ($id in $packages) {
+foreach ($id in $packages.Keys) {
+    $source = $packages[$id]
+
     # winget list exits non-zero when the package is not installed
     winget list --id $id --exact --accept-source-agreements | Out-Null
     if ($LASTEXITCODE -eq 0) {
@@ -57,8 +61,8 @@ foreach ($id in $packages) {
         continue
     }
 
-    Write-Host "[install] $id"
-    winget install --id $id --exact --source winget --silent `
+    Write-Host "[install] $id (from $source)"
+    winget install --id $id --exact --source $source --silent `
         --accept-source-agreements --accept-package-agreements
     if ($LASTEXITCODE -ne 0) {
         $failed += $id
