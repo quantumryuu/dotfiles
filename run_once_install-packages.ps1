@@ -40,8 +40,7 @@ $packages = @(
     'Microsoft.PowerShell'          # PowerShell 7
     'Microsoft.WindowsTerminal'
     'Starship.Starship'
-    'DEVCOM.JetBrainsMonoNerdFont'  # Starship's icons need a Nerd Font; any one works
-)
+    'ryanoasis.CaskaydiaCove'  # Starship's icons need a Nerd Font; any one works)
 
 if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     Write-Host "winget not found. Install 'App Installer' from the Microsoft Store, then run 'chezmoi apply' again."
