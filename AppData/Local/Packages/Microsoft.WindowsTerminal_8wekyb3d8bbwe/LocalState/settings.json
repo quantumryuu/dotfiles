@@ -48,6 +48,7 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
+                "colorScheme": "Ubuntu (modified)",
                 "guid": "{05dd2970-e012-592f-91c3-1574f2ecfcec}",
                 "hidden": false,
                 "name": "Ubuntu",
@@ -67,6 +68,12 @@
                 "name": "Windows PowerShell",
                 "opacity": 80,
                 "useAcrylic": true
+            },
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore"
             }
         ]
     },
@@ -94,6 +101,29 @@
             "selectionBackground": "#44475A",
             "white": "#F8F8F2",
             "yellow": "#F1FA8C"
+        },
+        {
+            "background": "#300A24",
+            "black": "#2E3436",
+            "blue": "#3465A4",
+            "brightBlack": "#555753",
+            "brightBlue": "#729FCF",
+            "brightCyan": "#34E2E2",
+            "brightGreen": "#8AE234",
+            "brightPurple": "#AD7FA8",
+            "brightRed": "#EF2929",
+            "brightWhite": "#EEEEEC",
+            "brightYellow": "#FCE94F",
+            "cursorColor": "#BBBBBB",
+            "cyan": "#06989A",
+            "foreground": "#EEEEEC",
+            "green": "#4E9A06",
+            "name": "Ubuntu (modified)",
+            "purple": "#75507B",
+            "red": "#CC0000",
+            "selectionBackground": "#FFFFFF",
+            "white": "#D3D7CF",
+            "yellow": "#C4A000"
         }
     ],
     "themes": []
