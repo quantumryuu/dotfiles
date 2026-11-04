@@ -4,7 +4,7 @@
     "actions": [],
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "keybindings": 
     [
         {
@@ -32,7 +32,16 @@
     ],
     "profiles": 
     {
-        "defaults": {},
+        "defaults":
+        {
+            "colorScheme": "Dracula",
+            "font":
+            {
+                "face": "CaskaydiaCove Nerd Font"
+            },
+            "opacity": 80,
+            "useAcrylic": true
+        },
         "list": 
         [
             {
@@ -55,21 +64,13 @@
                 "source": "Microsoft.WSL"
             },
             {
-                "backgroundImage": "C:\\Users\\christos\\Desktop\\bg2.jpg",
-                "backgroundImageOpacity": 0.4,
-                "colorScheme": "Dracula",
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoLogo",
-                "font": 
-                {
-                    "face": "CaskaydiaCove Nerd Font"
-                },
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
-                "name": "Windows PowerShell",
-                "opacity": 80,
-                "useAcrylic": true
+                "name": "Windows PowerShell"
             },
             {
+                "commandline": "pwsh.exe -NoLogo",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",

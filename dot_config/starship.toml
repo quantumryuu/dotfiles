@@ -2,7 +2,8 @@
 
 format = """
 [](red)\
-[Christos](bg:red fg:crust)\
+$os\
+$username\
 [](bg:peach fg:red)\
 $directory\
 [](fg:peach bg:lavender)\
@@ -17,6 +18,7 @@ palette = 'catppuccin_mocha'
 [os]
 disabled = false
 style = "bg:red fg:crust"
+format = '[$symbol ]($style)'
 
 [os.symbols]
 Windows = ""

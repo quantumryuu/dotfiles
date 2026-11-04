@@ -4,6 +4,8 @@
 # whenever the contents of this file change. It is safe to re-run:
 # anything already in place is skipped.
 
+$failed = @()
+
 # ---------------------------------------------------------------------------
 # 1. PowerShell profile loader
 # ---------------------------------------------------------------------------
@@ -32,51 +34,15 @@ foreach ($edition in 'PowerShell', 'WindowsPowerShell') {
 }
 
 # ---------------------------------------------------------------------------
-# 2. Packages
+# 2. Folders
 # ---------------------------------------------------------------------------
-# Edit this list to taste: package ID = the winget source it comes from.
-# Apps live in 'winget', fonts in 'winget-font'. Find IDs with: winget search <name>
+# The profile's `temp` function changes to C:\temp
 
-$packages = [ordered]@{
-    'Microsoft.PowerShell'      = 'winget'        # PowerShell 7
-    'Microsoft.WindowsTerminal' = 'winget'
-    'Starship.Starship'         = 'winget'
-    'ryanoasis.CaskaydiaCove'   = 'winget-font'   # Starship's icons need a Nerd Font; any one works
-}
-
-if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
-    Write-Host "winget not found. Install 'App Installer' from the Microsoft Store, then run 'chezmoi apply' again."
-    exit 1
-}
-
-$failed = @()
-
-# `winget list` does not see fonts, so an installed font reaches `winget install`,
-# which then exits with one of these "nothing to do" codes. They are not failures.
-$alreadyInstalled = @(
-    -1978335189   # 0x8A15002B: already installed, no upgrade available
-    -1978335135   # 0x8A150061: already installed
-)
-
-foreach ($id in $packages.Keys) {
-    $source = $packages[$id]
-
-    # winget list exits non-zero when the package is not installed
-    winget list --id $id --exact --accept-source-agreements | Out-Null
-    if ($LASTEXITCODE -eq 0) {
-        Write-Host "[skip]    $id is already installed"
-        continue
-    }
-
-    Write-Host "[install] $id (from $source)"
-    winget install --id $id --exact --source $source --silent `
-        --accept-source-agreements --accept-package-agreements
-
-    if ($alreadyInstalled -contains $LASTEXITCODE) {
-        Write-Host "[skip]    $id is already installed"
-    } elseif ($LASTEXITCODE -ne 0) {
-        $failed += $id
-    }
+if (Test-Path 'C:\temp') {
+    Write-Host "[skip]    C:\temp already exists"
+} else {
+    New-Item -ItemType Directory -Path 'C:\temp' | Out-Null
+    Write-Host "[folder]  created C:\temp"
 }
 
 # ---------------------------------------------------------------------------
@@ -120,7 +86,7 @@ foreach ($name in $modules.Keys) {
 }
 '@
 
-# PATH is not refreshed yet if winget installed PowerShell 7 a moment ago,
+# PATH may not include PowerShell 7 yet if it was installed in this same session,
 # so fall back to its default install location
 $pwshCommand = Get-Command pwsh -ErrorAction SilentlyContinue
 if ($pwshCommand) {
@@ -159,4 +125,4 @@ if ($failed.Count -gt 0) {
     exit 1
 }
 
-Write-Host "Done. Open a new terminal so PATH changes take effect."
+Write-Host "Done."
